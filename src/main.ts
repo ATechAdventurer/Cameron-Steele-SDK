@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch';
-import { Config } from './types';
+import { Config, FilteringOptions, RequestOptions } from './types';
 
 export abstract class Main {
     private apiKey: string;
@@ -10,8 +10,13 @@ export abstract class Main {
         this.baseUrl = config.baseUrl || 'https://the-one-api.dev/v2/';
     }
 
-    protected request<T>(endpoint: string, transform: Function, options?: RequestInit, contentType: string = 'application/json'): Promise<T> {
-        const url = `${this.baseUrl}${endpoint}`;
+    protected request<T>(endpoint: string, transform: Function, apiOptions?: RequestOptions, filters?: FilteringOptions, options?: RequestInit, contentType: string = 'application/json'): Promise<T> {
+
+
+        let urlParams = Object.keys(apiOptions || {}).map(key => `${key}=${apiOptions[key]}`).join('&');
+        urlParams += Object.keys(filters || {}).map(key => filters[key]).join('&');
+        const url = `${this.baseUrl}${endpoint}?${urlParams}`;
+        console.log(url)
         const headers = {
             'Content-Type': contentType,
             'Authorization': `Bearer ${this.apiKey}`,
