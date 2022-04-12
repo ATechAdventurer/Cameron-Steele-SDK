@@ -1,0 +1,19 @@
+{
+  "name": "cameron-steele-sdk",
+  "version": "1.0.0",
+  "description": "A simple typescript SDK for working with the LOTR API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ATechAdventurer/Cameron-Steele-SDK.git"
+  },
+  "author": "Cameron Steele (ATechAdventurer)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ATechAdventurer/Cameron-Steele-SDK/issues"
+  },
+  "homepage": "https://github.com/ATechAdventurer/Cameron-Steele-SDK#readme"
+}
