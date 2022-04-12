@@ -1,6 +1,6 @@
 {
   "name": "@atechadventurer/cameron-steele-lotr-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple typescript SDK for working with the LOTR API",
   "main": "dist/index.cjs",
   "type": "module",
