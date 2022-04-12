@@ -10,7 +10,7 @@ export abstract class Main {
         this.baseUrl = config.baseUrl || 'https://the-one-api.dev/v2/';
     }
 
-    protected request<T>(endpoint: string, options?: RequestInit, contentType: string = 'application/json'): Promise<T> {
+    protected request<T>(endpoint: string, transform: Function, options?: RequestInit, contentType: string = 'application/json'): Promise<T> {
         const url = `${this.baseUrl}${endpoint}`;
         const headers = {
             'Content-Type': contentType,
@@ -22,13 +22,15 @@ export abstract class Main {
         };
         return fetch(url, config).then(response => {
             if (response.ok) {
-                return response.json();
+                return transform(response);
             }
             switch (response.status) {
                 case 404:
                     throw new Error('Not found');
                 case 400:
                     throw new Error('Bad request');
+                case 429:
+                    throw new Error('Too many requests');
             }
         });
     }

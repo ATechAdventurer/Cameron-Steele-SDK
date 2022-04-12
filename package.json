@@ -23,5 +23,8 @@
   "homepage": "https://github.com/ATechAdventurer/Cameron-Steele-SDK#readme",
   "dependencies": {
     "isomorphic-unfetch": "^3.1.0"
+  },
+  "devDependencies": {
+    "microbundle": "^0.14.2"
   }
 }
