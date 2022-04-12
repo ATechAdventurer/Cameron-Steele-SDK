@@ -2,9 +2,14 @@
   "name": "cameron-steele-sdk",
   "version": "1.0.0",
   "description": "A simple typescript SDK for working with the LOTR API",
-  "main": "index.js",
+  "main": "dist/index.cjs",
+  "type": "module",
+  "module": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "source": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist && microbundle  --tsconfig tsconfig.json",
+    "dev": "microbundle watch --tsconfig tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -15,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/ATechAdventurer/Cameron-Steele-SDK/issues"
   },
-  "homepage": "https://github.com/ATechAdventurer/Cameron-Steele-SDK#readme"
+  "homepage": "https://github.com/ATechAdventurer/Cameron-Steele-SDK#readme",
+  "dependencies": {
+    "isomorphic-unfetch": "^3.1.0"
+  }
 }
